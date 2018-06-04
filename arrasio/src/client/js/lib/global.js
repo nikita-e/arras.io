@@ -44,7 +44,6 @@ module.exports = {
     KEY_CHOOSE_8: 76,
     KEY_LEVEL_UP: 78,
     KEY_FUCK_YOU: 191,
-
     // Canvas
     screenWidth: window.innerWidth,
     screenHeight: window.innerHeight,
@@ -59,6 +58,6 @@ module.exports = {
     continuity: false,
     startPingTime: 0,
     toggleMassState: 0,
-    backgroundColor: '#f2fbff',
-    lineColor: '#000000',
+    backgroundColor: '#F2FBFF',
+    lineColor: '#000',
 };
