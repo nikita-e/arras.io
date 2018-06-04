@@ -31,8 +31,8 @@ exports.irandomRange = (min, max) => {
 exports.gauss = (mean, deviation) => {
     let x1, x2, w;
     do {
-        x1 = 2*Math.random() - 1;
-        x2 = 2*Math.random() - 1;
+        x1 = 2 * Math.random() - 1;
+        x2 = 2 * Math.random() - 1;
         w = x1 * x1 + x2 * x2;
     } while (0 == w || w >= 1);
 
@@ -47,17 +47,17 @@ exports.gaussInverse = (min, max, clustering) => {
     while (output < 0) {
         output += range;
     }
-    
+
     while (output > range) {
         output -= range;
     }
-    
+
     return output + min;
 };
 
 exports.gaussRing = (radius, clustering) => {
     let r = exports.random(Math.PI * 2);
-    let d = exports.gauss(radius, radius*clustering);
+    let d = exports.gauss(radius, radius * clustering);
     return {
         x: d * Math.cos(r),
         y: d * Math.sin(r),
@@ -78,7 +78,7 @@ exports.choose = arr => {
 
 exports.chooseN = (arr, n) => {
     let o = [];
-    for (let i=0; i<n; i++) {
+    for (let i = 0; i < n; i++) {
         o.push(arr.splice(exports.irandom(arr.length - 1), 1)[0]);
     }
     return o;
@@ -86,10 +86,12 @@ exports.chooseN = (arr, n) => {
 
 exports.chooseChance = (...arg) => {
     let totalProb = 0;
-    arg.forEach(function(value) { totalProb += value; });
+    arg.forEach(function(value) {
+        totalProb += value;
+    });
     let answer = exports.random(totalProb);
-    for (let i=0; i<arg.length; i++) {
-        if (answer<arg[i]) return i;
+    for (let i = 0; i < arg.length; i++) {
+        if (answer < arg[i]) return i;
         answer -= arg[i];
     }
 };
@@ -151,35 +153,36 @@ exports.chooseBotName = () => {
 
 exports.chooseBossName = (code, n) => {
     switch (code) {
-    case 'a':
-    return exports.chooseN([
-        'Archimedes',
-        'Akilina',
-        'Anastasios',
-        'Athena',
-        'Alkaios',
-        'Amyntas',
-        'Aniketos',
-        'Artemis',
-        'Anaxagoras',
-        'Apollon',
-    ], n);
-    case 'castle':
-    return exports.chooseN([
-        'Berezhany',
-        'Lutsk',
-        'Dobromyl',
-        'Akkerman',
-        'Palanok',
-        'Zolochiv',
-        'Palanok',
-        'Mangup',
-        'Olseko',
-        'Brody',
-        'Isiaslav',
-        'Kaffa',
-        'Bilhorod',
-    ], n);
-    default: return 'God';
+        case 'a':
+            return exports.chooseN([
+                'Archimedes',
+                'Akilina',
+                'Anastasios',
+                'Athena',
+                'Alkaios',
+                'Amyntas',
+                'Aniketos',
+                'Artemis',
+                'Anaxagoras',
+                'Apollon',
+            ], n);
+        case 'castle':
+            return exports.chooseN([
+                'Berezhany',
+                'Lutsk',
+                'Dobromyl',
+                'Akkerman',
+                'Palanok',
+                'Zolochiv',
+                'Palanok',
+                'Mangup',
+                'Olseko',
+                'Brody',
+                'Isiaslav',
+                'Kaffa',
+                'Bilhorod',
+            ], n);
+        default:
+            return 'God';
     }
 };
